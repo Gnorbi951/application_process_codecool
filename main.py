@@ -19,7 +19,7 @@ def mentor_names():
 
 @app.route('/miskolc_mentor_nicknames')
 def miskolc_mentor_nicknames():
-    nicknames = data_manager.get_miskolc_mentor_nicknames()
+    nicknames = data_manager.get_mentor_nicknames('Miskolc')
 
     return render_template('mentor_names.html', nicknames=nicknames)
 

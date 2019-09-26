@@ -12,11 +12,12 @@ def get_all_mentor_names(cursor):
 
 
 @database_common.connection_handler
-def get_miskolc_mentor_nicknames(cursor):
+def get_mentor_nicknames(cursor, city):
     cursor.execute("""
                     SELECT nick_name FROM mentors
-                    WHERE city = 'Miskolc'
+                    WHERE city = %(city)s
                     ORDER BY nick_name;
-                    """,)
+                    """,
+                   {'city': city})
     nicknames = cursor.fetchall()
     return nicknames
