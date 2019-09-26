@@ -21,3 +21,14 @@ def get_mentor_nicknames(cursor, city):
                    {'city': city})
     nicknames = cursor.fetchall()
     return nicknames
+
+
+@database_common.connection_handler
+def get_applicant_by_first_name(cursor, applicant):
+    cursor.execute("""
+                    SELECT full_name, phone_number FROM applicants
+                    WHERE first_name = %(applicant)s
+                    """,
+                   {'applicant': applicant})
+    name = cursor.fetchall()
+    return name

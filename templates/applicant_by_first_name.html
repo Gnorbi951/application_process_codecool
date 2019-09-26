@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form method="post">
+    <label>
+        <input type="text" required name="searched_applicant">
+        <input type="submit">
+    </label>
+
+</form>
+    <br>
+    {% for data in name_and_phone %}
+        Full Name: {{ data.full_name }}<br/>
+        Phone Number: {{ data.phone_number }}<br/>
+        <br>
+    {% endfor %}
+    <br/>
+    {% include 'footer.html' %}
+{% endblock %}
