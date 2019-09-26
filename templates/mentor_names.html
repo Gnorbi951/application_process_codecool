@@ -6,6 +6,10 @@
             {{ mentor_name.first_name + " " + mentor_name.last_name }}<br/>
         {% endfor%}
     </div>
-
+    <div id="miskolc_nicknames">
+        {% for names in nicknames %}
+            {{ names.nick_name }} <br/>
+        {% endfor %}
+    </div>
     {% include 'footer.html' %}
 {% endblock %}
