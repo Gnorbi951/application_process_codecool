@@ -27,8 +27,19 @@ def get_mentor_nicknames(cursor, city):
 def get_applicant_by_first_name(cursor, applicant):
     cursor.execute("""
                     SELECT full_name, phone_number FROM applicants
-                    WHERE first_name = %(applicant)s
+                    WHERE first_name = %(applicant)s;
                     """,
                    {'applicant': applicant})
     name = cursor.fetchall()
     return name
+
+
+@database_common.connection_handler
+def get_applicant_by_email(cursor, email):
+    cursor.execute("""
+                    SELECT full_name, phone_number, email FROM applicants
+                    WHERE email LIKE %(email)s;
+                    """,
+                   {'email': f'%{email}%'})
+    found_emails = cursor.fetchall()
+    return found_emails

@@ -3,5 +3,6 @@
 {% block content %}
     <a href="{{ url_for('mentor_names') }}">Mentor names</a><br/>
     <a href="{{ url_for('miskolc_mentor_nicknames') }}">Miskolc mentor nicknames</a><br/>
-    <a href="{{ url_for('search_for_applicant') }}">Get applicant by first name</a>
+    <a href="{{ url_for('search_for_applicant_by_name') }}">Get applicant by first name</a><br/>
+    <a href="{{ url_for('search_for_applicant_by_email') }}">Get applicant by email</a>
 {% endblock %}

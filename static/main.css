@@ -1,7 +1,11 @@
 body {
     background-color: #008e9d;
-    color: white;
+    color: black;
 }
+a {
+    color: red;
+}
+
 
 .content-wrapper {
     padding: 10%;

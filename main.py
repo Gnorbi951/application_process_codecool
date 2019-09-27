@@ -24,14 +24,24 @@ def miskolc_mentor_nicknames():
     return render_template('mentor_names.html', nicknames=nicknames)
 
 
-@app.route('/search-for-applicant', methods=['GET', 'POST'])
-def search_for_applicant():
+@app.route('/search-for-applicant-by-first-name', methods=['GET', 'POST'])
+def search_for_applicant_by_name():
     if request.method == 'GET':
         return render_template('applicant_by_first_name.html')
     else:
         first_name = request.form['searched_applicant']
         name_and_phone = data_manager.get_applicant_by_first_name(first_name)
         return render_template('applicant_by_first_name.html', name_and_phone=name_and_phone)
+
+
+@app.route('/search-for-applicant-by-email', methods=['GET', 'POST'])
+def search_for_applicant_by_email():
+    if request.method == 'GET':
+        return render_template('applicant_by_email.html')
+    else:
+        email = request.form['searched_email']
+        found_emails = data_manager.get_applicant_by_email(email)
+        return render_template('applicant_by_email.html', found_emails=found_emails)
 
 
 if __name__ == '__main__':

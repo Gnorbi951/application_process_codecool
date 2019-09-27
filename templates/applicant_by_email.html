@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form method="post">
+    <a>Type in any email fragment and the search will return every user info</a><br/>
+    <label>
+        <input type="text" required name="searched_email">
+        <input type="submit">
+    </label>
+
+</form>
+    <br>
+    {% for data in found_emails %}
+        Full Name: {{ data.full_name }}<br/>
+        Phone Number: {{ data.phone_number }}<br/>
+        Email: {{ data.email }}<br>
+        <br>
+    {% endfor %}
+    <br/>
+    {% include 'footer.html' %}
+{% endblock %}
