@@ -43,3 +43,31 @@ def get_applicant_by_email(cursor, email):
                    {'email': f'%{email}%'})
     found_emails = cursor.fetchall()
     return found_emails
+
+
+@database_common.connection_handler
+def adding_new_applicant(cursor, applicant_info):
+    first_name, last_name, phone_number, email, application_code, full_name = 0, 1, 2, 3, 4, 5
+    full_name = applicant_info[first_name] + ' ' + applicant_info[last_name]
+    largest_id = get_largest_id_from_applicants()
+    current_id = (largest_id[0].get('max')) + 1
+    cursor.execute("""
+                    INSERT INTO applicants
+                    VALUES(%(current_id)s, %(first_name)s, %(last_name)s,
+                            %(phone_number)s, %(email)s, %(application_code)s, %(full_name)s);
+                    """,
+                   {'current_id': current_id,
+                    'first_name': applicant_info[first_name],
+                    'last_name': applicant_info[last_name],
+                    'phone_number': applicant_info[phone_number],
+                    'email': applicant_info[email],
+                    'application_code': applicant_info[application_code],
+                    'full_name': full_name})
+
+
+@database_common.connection_handler
+def get_largest_id_from_applicants(cursor):
+    cursor.execute("""
+                    SELECT MAX(id) FROM applicants;""")
+    largest_id = cursor.fetchall()
+    return largest_id

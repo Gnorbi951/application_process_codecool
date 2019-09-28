@@ -44,5 +44,18 @@ def search_for_applicant_by_email():
         return render_template('applicant_by_email.html', found_emails=found_emails)
 
 
+@app.route('/add-new-applicant', methods=['GET', 'POST'])
+def add_new_applicant():
+    if request.method == 'GET':
+        return render_template('add_new_applicant.html')
+    else:
+        applicant_info = [request.form['first_name'], request.form['last_name'],
+                          request.form['phone_number'], request.form['email_address'],
+                          request.form['application_code']]
+        data_manager.adding_new_applicant(applicant_info)
+        status = 'Applicant was sucessfully added'
+        return render_template('add_new_applicant.html', status=status)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
