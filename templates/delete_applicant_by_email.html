@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Delete applicant by matching email</h1>
+    <h3>Be careful with this one</h3><br>
+    <form method="post">
+            <label for="email">Applicant's partial email address:</label><br>
+            <input type="text" required name="email" id="email"><br>
+            <input type="submit" value="Delete applicant by email"><br>
+    </form>
+    {% include 'footer.html' %}
+{% endblock %}

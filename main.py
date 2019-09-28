@@ -67,5 +67,15 @@ def update_phone():
         return render_template('update-phone-number.html')
 
 
+@app.route('/delete-applicant-by-email', methods=['GET', 'POST'])
+def delete_applicant():
+    if request.method == 'GET':
+        return render_template('delete_applicant_by_email.html')
+    else:
+        email = request.form.get('email')
+        data_manager.delete_applicant_by_email(email)
+        return render_template('delete_applicant_by_email.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

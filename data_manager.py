@@ -6,7 +6,7 @@ def get_all_mentor_names(cursor):
     cursor.execute("""
                     SELECT first_name, last_name FROM mentors
                     ORDER BY first_name;
-                   """,)
+                   """, )
     names = cursor.fetchall()
     return names
 
@@ -84,3 +84,12 @@ def update_phone_number(cursor, applicant_info):
                         """,
                    {'new_number': new_number,
                     'applicants_full_name': applicants_full_name})
+
+
+@database_common.connection_handler
+def delete_applicant_by_email(cursor, email):
+    cursor.execute("""
+                        DELETE FROM applicants
+                        WHERE email LIKE %(email)s
+                        """,
+                   {'email': f'%{email}'})
