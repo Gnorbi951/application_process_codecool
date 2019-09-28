@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 {% block content %}
-<form method="post">
-    <label>
-        <input type="text" required name="searched_applicant">
-        <input type="submit">
-    </label>
+    <h1>Get Applicant By First Name</h1>
+    <form method="post">
+        <label for="applicant">Applicant you're looking for:</label><br>
+            <input type="text" required name="searched_applicant" id="applicant">
+            <input type="submit">
 
-</form>
+    </form>
     <br>
     {% for data in name_and_phone %}
         Full Name: {{ data.full_name }}<br/>

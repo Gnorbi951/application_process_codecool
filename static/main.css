@@ -1,12 +1,33 @@
 body {
-    background-color: #008e9d;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/119/599/original/dirty-grunge-vector-background.jpg");
     color: black;
 }
-a {
+
+#mentors {
+    color: deeppink;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+
+}
+
+h1 {
     color: red;
 }
 
+h3 {
+    color: #9C1A1C;
+}
+
+label {
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    color: darkblue;
+}
+
+.content-wrapper #miskolc_nicknames {
+    color: darkblue;
+    font-family: fantasy;
+    font-size: 30px;
+}
 
 .content-wrapper {
-    padding: 10%;
+    padding: 8%;
 }

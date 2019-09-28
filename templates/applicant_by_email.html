@@ -1,11 +1,9 @@
 {% extends 'layout.html' %}
 {% block content %}
 <form method="post">
-    <a>Type in any email fragment and the search will return every user info</a><br/>
-    <label>
-        <input type="text" required name="searched_email">
+    <label for="search_email">Type in any email fragment and the search will return every user info</label><br>
+        <input type="text" required name="searched_email" id="search_email">
         <input type="submit">
-    </label>
 
 </form>
     <br>
