@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Update applicant's phone number</h1>
+    <form method="post">
+            <label for="full_name">Applicant's full name:</label><br>
+            <input type="text" required name="full_name" id="full_name"><br>
+            <label for="phone_number">Applicant's new phone number:</label><br>
+            <input type="text" required name="phone_number" id="phone_number"><br>
+            <input type="submit" value="Add new phone number"><br>
+    </form>
+    {% include 'footer.html' %}
+{% endblock %}

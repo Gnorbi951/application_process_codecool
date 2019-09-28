@@ -71,3 +71,16 @@ def get_largest_id_from_applicants(cursor):
                     SELECT MAX(id) FROM applicants;""")
     largest_id = cursor.fetchall()
     return largest_id
+
+
+@database_common.connection_handler
+def update_phone_number(cursor, applicant_info):
+    applicants_full_name = applicant_info[0]
+    new_number = applicant_info[1]
+    cursor.execute("""
+                        UPDATE applicants
+                        SET phone_number = %(new_number)s
+                        WHERE full_name = %(applicants_full_name)s;
+                        """,
+                   {'new_number': new_number,
+                    'applicants_full_name': applicants_full_name})

@@ -53,8 +53,18 @@ def add_new_applicant():
                           request.form['phone_number'], request.form['email_address'],
                           request.form['application_code']]
         data_manager.adding_new_applicant(applicant_info)
-        status = 'Applicant was sucessfully added'
+        status = 'Applicant was successfully added'
         return render_template('add_new_applicant.html', status=status)
+
+
+@app.route('/update-applicant-phone-number', methods=['GET', 'POST'])
+def update_phone():
+    if request.method == 'GET':
+        return render_template('update-phone-number.html')
+    else:
+        applicant_info = [request.form['full_name'], request.form['phone_number']]
+        data_manager.update_phone_number(applicant_info)
+        return render_template('update-phone-number.html')
 
 
 if __name__ == '__main__':
