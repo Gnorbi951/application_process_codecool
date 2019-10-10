@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h1>Mentors per country</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th>Mentors</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in country_info %}
+                <tr>
+                    <td>{{ data.country }}</td>
+                    <td>{{ data.mentors }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+{% endblock %}

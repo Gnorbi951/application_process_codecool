@@ -119,3 +119,16 @@ def get_mentors_with_all_schools(cursor):
                     """)
     all_school_info = cursor.fetchall()
     return all_school_info
+
+
+@database_common.connection_handler
+def get_mentor_number_per_country(cursor):
+    cursor.execute("""
+                        SELECT country, COUNT(mentors.id) AS mentors FROM mentors
+                            FULL JOIN schools 
+                                ON mentors.city = schools.city
+                        GROUP BY country
+                        ORDER BY country
+                    """)
+    country_info = cursor.fetchall()
+    return country_info

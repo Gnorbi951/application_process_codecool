@@ -89,5 +89,11 @@ def all_school_page():
     return render_template('mentor_with_all_schools.html', all_school_info=all_school_info)
 
 
+@app.route('/mentors-by-country')
+def mentors_by_country():
+    country_info = data_manager.get_mentor_number_per_country()
+    return render_template('mentor_per_country.html', country_info=country_info)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
