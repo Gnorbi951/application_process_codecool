@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h1>Contact people</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Applicant's First Name</th>
+            <th>Application Code</th>
+            <th>Creation_date</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in applicant_info %}
+                <tr>
+                    <td>{{ data.first_name }}</td>
+                    <td>{{ data.application_code }}</td>
+                    <td>{{ data.creation_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h1>Contact people</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>School Name</th>
+            <th>Mentor First Name</th>
+            <th>Mentor Last Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in contact_info %}
+                <tr>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.first_name }}</td>
+                    <td>{{ data.last_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+{% endblock %}

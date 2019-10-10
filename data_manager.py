@@ -128,7 +128,32 @@ def get_mentor_number_per_country(cursor):
                             FULL JOIN schools 
                                 ON mentors.city = schools.city
                         GROUP BY country
-                        ORDER BY country
+                        ORDER BY country;
                     """)
     country_info = cursor.fetchall()
     return country_info
+
+
+@database_common.connection_handler
+def get_contact_person(cursor):
+    cursor.execute("""
+                    SELECT schools.name, mentors.first_name, mentors.last_name FROM mentors
+                    INNER JOIN schools
+                        ON mentors.id = schools.contact_person
+                    ORDER BY schools.name;
+                    """)
+    contact_info = cursor.fetchall()
+    return contact_info
+
+
+@database_common.connection_handler
+def get_applicant_info(cursor):
+    cursor.execute("""
+                    SELECT applicants.first_name, applicants.application_code, creation_date FROM applicants
+                    INNER JOIN applicants_mentors
+                        ON  applicants.id = applicants_mentors.applicant_id
+                    WHERE creation_date > '2016-01-01'
+                    ORDER BY creation_date DESC;
+                    """)
+    applicant_info = cursor.fetchall()
+    return applicant_info

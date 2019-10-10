@@ -95,5 +95,17 @@ def mentors_by_country():
     return render_template('mentor_per_country.html', country_info=country_info)
 
 
+@app.route('/contacts')
+def contacts():
+    contact_info = data_manager.get_contact_person()
+    return render_template('contact_people.html', contact_info=contact_info)
+
+
+@app.route('/applicants')
+def applicants():
+    applicant_info = data_manager.get_applicant_info()
+    return render_template('applicant_info.html', applicant_info=applicant_info)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
