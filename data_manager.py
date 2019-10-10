@@ -157,3 +157,18 @@ def get_applicant_info(cursor):
                     """)
     applicant_info = cursor.fetchall()
     return applicant_info
+
+
+@database_common.connection_handler
+def get_applicants_mentors(cursor):
+    cursor.execute("""
+                        SELECT applicants.first_name AS "ap_first_name",
+                        applicants.application_code, mentors.first_name AS "me_first_name", mentors.last_name 
+                        FROM applicants
+                        FULL JOIN applicants_mentors
+                            ON applicants.id = applicants_mentors.applicant_id
+                        LEFT JOIN mentors
+                            ON mentors.id = applicants_mentors.mentor_id;
+                        """)
+    applicants_mentors = cursor.fetchall()
+    return applicants_mentors

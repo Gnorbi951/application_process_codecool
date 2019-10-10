@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h1>Applicants and mentors</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Application Code</th>
+            <th>Mentor First Name</th>
+            <th>Mentor Last Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in applicants_mentors %}
+                <tr>
+                    <td>{{ data.ap_first_name }}</td>
+                    <td>{{ data.application_code }}</td>
+                    <td>{{ data.me_first_name }}</td>
+                    <td>{{ data.last_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+{% endblock %}

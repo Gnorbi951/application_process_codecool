@@ -107,5 +107,11 @@ def applicants():
     return render_template('applicant_info.html', applicant_info=applicant_info)
 
 
+@app.route('/applicants-and-mentors ')
+def applicants_and_mentors():
+    applicants_mentors = data_manager.get_applicants_mentors()
+    return render_template('applicants_and_mentors.html', applicants_mentors=applicants_mentors)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
