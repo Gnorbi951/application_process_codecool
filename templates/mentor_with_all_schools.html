@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h1>Mentors and their schools:</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>School Name</th>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in all_school_info %}
+                <tr>
+                    <td>{{ data.first_name }}</td>
+                    <td>{{ data.last_name }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.country }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+{% endblock %}

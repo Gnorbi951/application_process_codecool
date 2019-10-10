@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h1>Mentors and their schools:</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>School Name</th>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in mentor_info %}
+                <tr>
+                    {% if data.mentors.first_name|length %}
+                        <td>{{data.mentors.first_name}}</td>
+                    {% else %}
+                        <td>Empty</td>
+                    {% endif %}
+                    {% if data.mentors.last_name|length %}
+                        <td>{{data.mentors.last_name}}</td>
+                    {% else %}
+                        <td>Empty</td>
+                    {% endif %}
+                    <td>{{ data.schools.name }}</td>
+                    <td>{{ data.schools.country }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
+{% endblock %}

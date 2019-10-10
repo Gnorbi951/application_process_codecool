@@ -77,5 +77,17 @@ def delete_applicant():
         return render_template('delete_applicant_by_email.html')
 
 
+@app.route('/mentors')
+def mentors_and_schools():
+    mentor_info = data_manager.get_mentors_with_schools()
+    return render_template('mentor_schools.html', mentor_info=mentor_info)
+
+
+@app.route('/all-school')
+def all_school_page():
+    all_school_info = data_manager.get_mentors_with_all_schools()
+    return render_template('mentor_with_all_schools.html', all_school_info=all_school_info)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

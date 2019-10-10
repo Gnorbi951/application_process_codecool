@@ -93,3 +93,29 @@ def delete_applicant_by_email(cursor, email):
                         WHERE email LIKE %(email)s
                         """,
                    {'email': f'%{email}'})
+
+
+@database_common.connection_handler
+def get_mentors_with_schools(cursor):
+    cursor.execute("""
+                    SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                    FROM mentors
+                        INNER JOIN schools
+                        ON mentors.city = schools.city
+                        ORDER BY mentors.id;
+                    """)
+    mentor_info = cursor.fetchall()
+    return mentor_info
+
+
+@database_common.connection_handler
+def get_mentors_with_all_schools(cursor):
+    cursor.execute("""
+                    SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                    FROM mentors
+                        RIGHT JOIN schools
+                        ON mentors.city = schools.city
+                    ORDER BY mentors.id
+                    """)
+    all_school_info = cursor.fetchall()
+    return all_school_info
